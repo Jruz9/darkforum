@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<<<<<<< HEAD
+<h1>{{ post.post_title }}</h1>
+<p>{{post.post_comment}}</p>
+<form action="/post" method="post">
+    <div class="mb-3" id="like">
+        {% if liked and not disliked %}
+            <button type="button" class="btn btn-primary" id="unlike-button" style="background-color: green;">Like: {likes}</button>
+        {% endif %}
+        {% if not liked %}
+            <button type="button" class="btn btn-primary" id="like-button" style="background-color: lightgreen;">Like: {likes}</button>
+        {% endif %}
+    </div>
+    <div class="mb-3" id="dislike">
+        {% if disliked and not liked %}
+            <button type="button" class="btn btn-primary" id="undislike-button" style="background-color: red;">Dislike: {dislikes}</button>
+        {% endif %}
+        {% if not disliked %}
+            <button type="button" class="btn btn-primary" id="dislike-button" style="background-color: lightcoral;">Dislike: {dislikes}</button>
+        {% endif %}
+    </div>
+</form>
+=======
+
+<div class="b-3">
+    <h1>{{ post.post_title }}</h1>
+    <p>{{post.post_comment}}</p>
+    <button type="button" class="btn btn-outline-primary" href="/post/{{Posts.post_id}}" >Update Post</button>
+    <button type="button" class="btn btn-outline-danger" href="/">Delete Post</button>
+</div>
+
+
+>>>>>>> main
+{% endblock %}

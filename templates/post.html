@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="container">
+    <div class="mb-3">
+        <h1>{{ post.post_title }}</h1>
+        <hr class="mt-2 mb-3" />
+        <p>{{ post.post_text }}</p>
+    </div>
+
+    <form action="/create_comment/{{ post.posts_id }}" method="post">
+        <div class="mb-3">
+            <label for="comment_text" class="form-label">Comment on This Post!</label>
+            <input type="text" name="comment_text" id="comment_text" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Comment</button>
+    </form>
+
+    <form action="/post/{{ post.posts_id }}">
+        <div class="mt-2 mb-3">
+            {% if clicked == false %}
+                <button class="btn btn-primary" name="like_button" id="like_button" onclick="likeOnClick">Like</button>
+                <input type="text" name="type" id="type" class="form-control" style="display:none;">
+                <button  class="btn btn-primary" name="dislike_button" id="dislike_button" onclick="dislikeOnClick">Dislike</button>
+            {% endif %}
+        </div>
+    </form>
+
+    <script>
+        function likeOnClick()
+        {
+            document.getElementById("FORM_ID_HERE").submit;
+        }
+
+        function dislikeOnClick()
+        {
+            document.getElementById("FORM_ID_HERE").submit;
+        }
+    </script>
+
+    {% for comment in comments %}
+        {% if comment.comment_posts_id == post.posts_id %}
+            <h1>{{ comment.comment_author }}</h1>
+            <p>{{ comment.comment_text }}</p>
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock %}

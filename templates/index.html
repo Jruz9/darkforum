@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+</div>
+</div>
+</nav>
+
+<div class="container">
+    <div class="subforum">
+        <div class="subforum-title">
+            <h1>General Information</h1>
+        </div>
+        <!--Post chain creation-->
+        {% for i in range(num_post) %}
+        <div class="subforum-row">
+            <div class="subforum-description subforum-column">
+                <h1><a href="/post/{{ posts[i].posts_id }}">{{ posts[i].post_title }}</a></h1>
+                <p>{{ posts[i].post_text }}</p>
+
+                <!--Shows buttons if correct user has logged in-->
+                {% if logged_in_user.username == posts[i].post_author %}
+                    <button type="submit" class="btn btn-primary"><a href="/delete_post/{{ posts[i].posts_id }}">Delete</a></button>
+                    <button type="submit" class="btn btn-primary"><a href="/edit_post/new/{{ posts[i].posts_id }}">Edit</a></button>
+                {% endif %}
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>{{ num_likes }} Likes {{ num_dislikes }} Dislikes</span>
+            </div>
+            <div class="subforum-info subforum-column">
+                Last Post by <a href="">{{ posts[i].post_author }}</a>
+                <br>
+                on <small> 22 Dec 2021</small>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

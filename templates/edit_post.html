@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+
+<div class="container">
+    <h1 class="mb-3">Edit the Post</h1>
+    <hr class="mt-2 mb-3"/>
+
+    <form action="/edit_post/{{ post.posts_id }}" method="post">
+        <div class="mb-3">
+            <label for="post_title" class="form-label">{{ post.post_title }}</label>
+            <input type="text" id="post_title" name="post_title" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="post_text" class="form-label">{{ post.post_text }}</label>
+            <input type="text" id="post_text" name="post_text" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Apply Changes</button>
+    </form>
+
+    {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+    {% endif %}
+</div>
+
+{% endblock %}
