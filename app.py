@@ -9,7 +9,7 @@ from datetime import date
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = getenv("CLEARDB_DATABASE_URL")#'mysql://root:main@localhost:3306/forum'
+app.config['SQLALCHEMY_DATABASE_URI'] = getenv("CLEARDB_DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app) 
